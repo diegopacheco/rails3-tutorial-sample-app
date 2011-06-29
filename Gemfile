@@ -17,6 +17,7 @@ group :test do
    gem 'autotest'
    gem 'redgreen'
    gem 'test-unit'
+   gem 'spork'
 end
 
 # Use unicorn as the web server
