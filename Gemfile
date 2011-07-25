@@ -1,11 +1,11 @@
  source 'http://rubygems.org'
 
-gem 'rails', '3.0.9'
-
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'rails', '3.0.9'
 gem 'sqlite3'
+gem 'gravatar_image_tag'
 
 group :development do
    gem 'rspec-rails' 
@@ -19,6 +19,7 @@ group :test do
    gem 'redgreen'
    gem 'test-unit'
    gem 'spork'
+   gem 'factory_girl_rails'
 end
 
 # Use unicorn as the web server

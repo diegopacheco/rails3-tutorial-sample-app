@@ -113,3 +113,15 @@ footernav {
   float: none;
 }
 
+/* User show page */
+
+table.profile {
+  width:100%;
+  margin-bottom:0;
+}
+
+td.main {
+  width:70%;
+  padding:1em;
+}
+

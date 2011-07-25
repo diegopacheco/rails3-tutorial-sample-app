@@ -8,6 +8,9 @@
 #  created_at :datetime
 #  updated_at :datetime
 #
+
+require 'digest'
+
 class User < ActiveRecord::Base
    attr_accessor   :password
    attr_accessible :name, :email, :password, :password_confirmation 
@@ -35,6 +38,12 @@ class User < ActiveRecord::Base
       # submitted_password.
       encrypted_password == encrypt(submitted_password)  
    end
+
+   def self.authenticate(email, submitted_password)
+      user = find_by_email(submitted_password)  
+      return nil  if user.nil?
+      return user if user.has_password?(submitted_password)
+   end
    
    private
 
@@ -44,6 +53,14 @@ class User < ActiveRecord::Base
 
       def encrypt(string)
          string # Only a temporary implementation!      
+      end
+
+      def make_salt
+         sucure_hash("#{Time.now.utc}--#{password}")  
+      end
+
+      def secure_hash(string)
+         Digest::SHA2.hexdigest(string)     
       end
 
 end
