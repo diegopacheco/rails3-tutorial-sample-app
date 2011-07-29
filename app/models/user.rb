@@ -48,6 +48,11 @@ class User < ActiveRecord::Base
    def email_address
       email
    end
+
+   def reset_password
+     self.password = ""
+     self.password_confirmation = ""    
+   end
    
    private
 
