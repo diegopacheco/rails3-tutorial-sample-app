@@ -37,7 +37,7 @@ module SampleApp
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password]
+    config.filter_parameters += [:password, :secret_code]
 
     ### Part of a Spork hack. See http://bit.ly/arY19y
     if Rails.env.test?
