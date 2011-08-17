@@ -10,8 +10,9 @@
 #
 
 require 'digest'
+require 'will_paginate'
 
-class User < ActiveRecord::Base
+class User < ActiveRecord::Base   
    attr_accessor   :password
    attr_accessible :name, :email, :password, :password_confirmation 
 
@@ -57,7 +58,7 @@ class User < ActiveRecord::Base
      self.password = ""
      self.password_confirmation = ""    
    end
-   
+
    private
 
       def encrypt_password

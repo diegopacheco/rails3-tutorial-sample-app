@@ -6,6 +6,7 @@
 gem 'rails', '3.0.9'
 gem 'sqlite3'
 gem 'gravatar_image_tag'
+gem 'will_paginate'
 
 group :development do
    gem 'rspec-rails' 
@@ -20,6 +21,7 @@ group :test do
    gem 'test-unit'
    gem 'spork'
    gem 'factory_girl_rails'
+   gem 'faker'
 end
 
 # Use unicorn as the web server

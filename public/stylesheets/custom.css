@@ -142,7 +142,7 @@ div.field, div.actions {
 }
 
 #error_explanation{
-  width:400px;
+  width:400px;  
   border:2px solid red;
   padding:7px;
   padding-bottom:12px;
@@ -169,4 +169,12 @@ div.field, div.actions {
 #error_explanation ulli {
   font-size:12px;
   list-style: square;
+}
+
+ul.users {
+  margin-top:1em;
+}
+
+.usersli {
+  list-style: none;
 }
