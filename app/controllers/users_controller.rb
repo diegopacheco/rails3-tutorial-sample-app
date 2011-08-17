@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   before_filter :admin_user,   :only => :destroy 
 
   def new
+    redirect_to_root_if_already_signedin
     @user  = User.new
     @title = "Sign up"    
   end
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
   end
 
   def create    
+     redirect_to_root_if_already_signedin  
      @user = User.new(params[:user])
      if @user.save 
         sign_in @user
@@ -78,5 +80,9 @@ class UsersController < ApplicationController
   def admin_user
       redirect_to(root_path) unless current_user.admin?  
   end
+
+  def redirect_to_root_if_already_signedin
+      redirect_to(root_path) unless !signed_in?
+  end  
 
 end
