@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'exceptions'
 
 describe UsersController do
  
@@ -336,6 +337,16 @@ describe UsersController do
                 delete :destroy, :id => @user
                 response.should redirect_to(users_path)
             end
+
+             it "should not let him destroy himself like a EMO" do     
+                 admin = Factory(:user, :email => "admindestroyemo@example.com", :admin => true)
+                 test_sign_in(admin)  
+            
+                 lambda do
+                     delete :destroy, :id => admin
+                 end.should raise_error(Exceptions::Unable_To_Delete_Yourself_Youre_Not_a_EMO)  
+            end
+            
         end 
     end
 

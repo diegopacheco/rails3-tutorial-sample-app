@@ -1,4 +1,5 @@
 require 'will_paginate'
+require 'exceptions'
 
 class UsersController < ApplicationController
   
@@ -53,6 +54,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+     dont_let_the_user_delete_himself
      User.find(params[:id]).destroy
      flash[:sucess] = "User destroy"  
      redirect_to users_path 
@@ -84,5 +86,13 @@ class UsersController < ApplicationController
   def redirect_to_root_if_already_signedin
       redirect_to(root_path) unless !signed_in?
   end  
+
+  def dont_let_the_user_delete_himself
+     #puts "current_user_id = #{current_user.id}" 
+     #puts "params_id = #{params[:id].id}" 
+     if current_user.id == params[:id].id  
+       raise Exceptions::Unable_To_Delete_Yourself_Youre_Not_a_EMO 
+     end
+  end 
 
 end
