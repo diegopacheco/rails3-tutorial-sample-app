@@ -69,6 +69,14 @@ describe UsersController do
           get :show, :id => @user
           response.should have_selector("h1>img", :class => "gravatar")    
        end
+
+       it "should show the user's microposts" do
+          mp1 = Factory(:micropost,:user => @user,:content=>"Foobar")
+          mp2 = Factory(:micropost,:user => @user,:content=>"Bazquux")
+          get :show, :id => @user
+          response.should have_selector("span.content",:content => mp1.content)
+          response.should have_selector("span.content",:content => mp2.content)
+       end
    
   end 
 
@@ -338,7 +346,7 @@ describe UsersController do
                 response.should redirect_to(users_path)
             end
 
-             it "should not let him destroy himself like a EMO" do     
+            it "should not let him destroy himself like a EMO" do     
                  admin = Factory(:user, :email => "admindestroyemo@example.com", :admin => true)
                  test_sign_in(admin)  
             

@@ -1,5 +1,9 @@
 module SessionsHelper
      
+     def authenticate
+        deny_access unless signed_in?  
+     end
+
      def signed_in?
         !current_user.nil?     
      end
@@ -48,12 +52,12 @@ module SessionsHelper
         cookies.signed[:remember_token] || [nil, nil]
      end
 
-    def store_location
-      session[:return_to] = request.fullpath
-    end
+     def store_location
+       session[:return_to] = request.fullpath
+     end
     
-    def clear_return_to
-      session[:return_to] = nil
-    end
+     def clear_return_to
+       session[:return_to] = nil
+     end
 
 end
