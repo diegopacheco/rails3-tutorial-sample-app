@@ -8,6 +8,9 @@ gem 'sqlite3'
 gem 'gravatar_image_tag'
 gem 'will_paginate'
 
+gem 'factory_girl_rails'
+gem 'faker'
+
 group :development do
    gem 'rspec-rails' 
    gem 'annotate'
@@ -20,8 +23,6 @@ group :test do
    gem 'redgreen'
    gem 'test-unit'
    gem 'spork'
-   gem 'factory_girl_rails'
-   gem 'faker'
 end
 
 # Use unicorn as the web server
